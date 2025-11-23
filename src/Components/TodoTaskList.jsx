@@ -1,5 +1,5 @@
 
-import { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Category, getTaskStatusColor } from '../JsonData/Categories'
 import { TaskDataContext } from '../ContextApi/Context'
 import { RiDeleteBin2Line } from '@remixicon/react'
@@ -7,31 +7,25 @@ import { PencilOff } from 'lucide-react'
 
 const TodoTaskList = () => {
 
-    const { tasks, setTasks } = useContext(TaskDataContext)
-    console.log(tasks)
+    const { tasks, setTasks, setModelStatus, modelType, setModelType} = useContext(TaskDataContext)
+
+    
 
 
     const handleStatus = (e) => {
         const tasksIndex = e.target.id
         const updatedTaskStatus = e.target.value
-
         let newArr = [...tasks]
-
         newArr[tasksIndex].status = updatedTaskStatus
-
         setTasks(newArr)
 
     }
 
-    const handleModel = (Modeltype)=>{
-        if(Modeltype === 'Delete'){
-            alert("clicking delete")
-        }
-        
-        if(Modeltype === 'Update'){
-            alert("clicking delete")
-        }
+    const handleModel = (type)=>{
+        setModelStatus('Open')
+        setModelType(type)
     }
+
 
 
 
@@ -49,7 +43,7 @@ const TodoTaskList = () => {
                             <button onClick={()=>handleModel('Delete')} className='border border-gray-500 px-2  rounded-sm'>
                                 < RiDeleteBin2Line size={18} />
                             </button>
-                            <button className='border border-gray-500 px-2 rounded-sm'>
+                            <button onClick={()=>handleModel('Update')} className='border border-gray-500 px-2 rounded-sm'>
                                 <PencilOff size={18} />
                             </button>
 
