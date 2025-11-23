@@ -10,6 +10,7 @@ const Context = (props) => {
     }, [])
 
     const [tasks, setTasks] = useState([])
+    const [modelStatus, setModelStatus] = useState('Close')
 
     useEffect(()=>{
         localStorage.setItem("todoTasks", (JSON.stringify(tasks)))
@@ -18,7 +19,7 @@ const Context = (props) => {
 
     return (
         <div>
-            <TaskDataContext.Provider value={{tasks, setTasks}}>
+            <TaskDataContext.Provider value={{tasks, setTasks, modelStatus, setModelStatus}}>
                 {props.children}
             </TaskDataContext.Provider>
         </div>

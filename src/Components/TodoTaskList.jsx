@@ -25,11 +25,11 @@ const TodoTaskList = () => {
 
     const handleModel = (Modeltype)=>{
         if(Modeltype === 'Delete'){
-
+            alert("clicking delete")
         }
         
         if(Modeltype === 'Update'){
-
+            alert("clicking delete")
         }
     }
 
@@ -46,7 +46,7 @@ const TodoTaskList = () => {
                             <select value={t.status} id={i} onChange={(e) => handleStatus(e)} style={{ backgroundColor: getTaskStatusColor(t.status) }} className='border border-gray-600 px-1 py-1 rounded-sm'>
                                 {Category.workStatusCategory.map((item) => <option key={item.id} value={item.name} style={{ backgroundColor: item.color }}>{item.emoji} {item.name}</option>)}
                             </select>
-                            <button onClick={()=>console.log("clicking on delete button and progress towards")} className='border border-gray-500 px-2  rounded-sm'>
+                            <button onClick={()=>handleModel('Delete')} className='border border-gray-500 px-2  rounded-sm'>
                                 < RiDeleteBin2Line size={18} />
                             </button>
                             <button className='border border-gray-500 px-2 rounded-sm'>

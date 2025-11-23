@@ -20,7 +20,7 @@ const ControlPanel = () => {
                 <div className="blank-space h-[70px]"></div>
                 <div className="blank-space w-full border border-red-500 p-3">fdsa</div>
             </div>
-            <button onClick={myMenu}  className="flex gap-2 border border-gray-500 py-2 px-3 rounded-lg cursor-pointer active:scale-99 hover:bg-gray-600 absolute top-3 left-5 z-1000"> {panelState === 'close' ? <RiMenu4Line /> : <X/> }   Control Panel</button>
+            <button onClick={myMenu}  className="flex gap-2 border border-gray-500 py-2 px-3 rounded-lg cursor-pointer active:scale-99 hover:bg-gray-600 absolute top-3 left-5 z-100"> {panelState === 'close' ? <RiMenu4Line /> : <X/> }   Control Panel</button>
         </div>
     )
 }
