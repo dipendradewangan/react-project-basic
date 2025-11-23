@@ -31,10 +31,6 @@ export const Category = {
 
 
 
-console.log(Category.workStatusCategory.find((item)=>item.name.toLowerCase() === "Pending".toLowerCase()).color)
-
-
-
 export const getTaskStatusColor = (statusName = 'Pending')=>{
     const taskInfo = Category.workStatusCategory.find((item)=>item.name.toLowerCase() === statusName.toLocaleLowerCase())
     return taskInfo.color

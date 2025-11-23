@@ -4,7 +4,7 @@ import TodoTaskList from "../Components/TodoTaskList"
 
 const Todo = () => {
     return (
-        <div className="p-6 w-full border-2 border-white " >
+        <div className="p-6 w-full border-2 border-white h-full" >
 
             <ControlPanel/>
             <div>
