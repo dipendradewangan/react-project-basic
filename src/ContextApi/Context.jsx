@@ -1,11 +1,20 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 
 export const TaskDataContext = createContext()
 
 
 const Context = (props) => {
 
+    useEffect(()=>{
+        setTasks(JSON.parse(localStorage.getItem("todoTasks")))
+    }, [])
+
     const [tasks, setTasks] = useState([])
+
+    useEffect(()=>{
+        localStorage.setItem("todoTasks", (JSON.stringify(tasks)))
+    },[tasks])
+
 
     return (
         <div>
