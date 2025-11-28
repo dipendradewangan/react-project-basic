@@ -9,7 +9,7 @@ const TodoHeader = () => {
 
     const submitHandler = ()=>{
 
-        setTasks([...tasks, {taskName: input, status: 'Pending'}])
+        setTasks([...tasks, {taskName: input, status: 'Pending', category: 'General', priority: 'Low Priority'}])
         setInput('')
 
         document.querySelector("#task-input").focus()

@@ -17,7 +17,8 @@ export const Category = {
     { "id": "TT8", "name": "Outside Tasks", "emoji": "🛒", "color": "#4FC3F7" },
     { "id": "TT9", "name": "Bills & Payments", "emoji": "💵", "color": "#00838F" },
     { "id": "TT10", "name": "Maintenance", "emoji": "🛠️", "color": "#6D4C41" },
-    { "id": "TT11", "name": "Fitness & Exercise", "emoji": "🏋️‍♂️", "color": "#76FF03" }
+    { "id": "TT11", "name": "Fitness & Exercise", "emoji": "🏋️‍♂️", "color": "#76FF03" },
+    { "id": "TT12", "name": "General", "emoji": "🌀", "color": "#9E9E9E" }
   ],
 
   "priorityCategories": [
@@ -31,9 +32,9 @@ export const Category = {
 
 
 
-export const getTaskStatusColor = (statusName = 'Pending')=>{
-    const taskInfo = Category.workStatusCategory.find((item)=>item.name.toLowerCase() === statusName.toLocaleLowerCase())
-    return taskInfo.color
-} 
+export const getTaskStatusColor = (statusName = 'Pending') => {
+  const taskInfo = Category.workStatusCategory.find((item) => item.name.toLowerCase() === statusName.toLocaleLowerCase())
+  return taskInfo.color
+}
 
 

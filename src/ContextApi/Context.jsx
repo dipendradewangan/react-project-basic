@@ -6,15 +6,18 @@ export const TaskDataContext = createContext()
 const Context = (props) => {
 
     useEffect(()=>{
-        setTasks(JSON.parse(localStorage.getItem("todoTasks")))
+
+        if(localStorage.getItem("todoTasks")){
+            setTasks(JSON.parse(localStorage.getItem("todoTasks")))
+        }
+        // setTasks(JSON.parse(localStorage.getItem("todoTasks")))
        
     }, [])
 
     const [tasks, setTasks] = useState([])
     const [modelStatus, setModelStatus] = useState('Close')
     const [modelType, setModelType] = useState("")
-
-     console.log(modelType)
+    const [updateTaskIndex, setUpdateTaskIndex] = useState(null)
 
     useEffect(()=>{
         localStorage.setItem("todoTasks", (JSON.stringify(tasks)))
@@ -23,7 +26,7 @@ const Context = (props) => {
 
     return (
         <div>
-            <TaskDataContext.Provider value={{tasks, setTasks, modelStatus, setModelStatus, modelType, setModelType}}>
+            <TaskDataContext.Provider value={{tasks, setTasks, modelStatus, setModelStatus, modelType, setModelType, updateTaskIndex, setUpdateTaskIndex}}>
                 {props.children}
             </TaskDataContext.Provider>
         </div>
