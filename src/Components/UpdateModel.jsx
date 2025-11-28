@@ -11,6 +11,8 @@ const UpdateModel = () => {
 
     const [updateTask, setUpdateTask] = useState(tasks[updateTaskIndex])
 
+    const [status, setStatus ] = useState(tasks[updateTaskIndex].status)
+
     // const [tempUpdateTask, setTempUpdateTask] = useState([...updateTask])
 
 
@@ -28,6 +30,24 @@ const UpdateModel = () => {
         newObj.priority = e.target.value
         setUpdateTask(newObj)
 
+    }
+
+
+    const handleSubmit = () => {
+        const newTaskArray = [...tasks]
+
+        newTaskArray[updateTaskIndex].taskName = updateInput
+        newTaskArray[updateTaskIndex].priority = updateTask.priority
+        newTaskArray[updateTaskIndex].category = updateTask.category
+        newTaskArray[updateTaskIndex].status = status
+
+        setTasks(newTaskArray)
+    }
+
+
+    const handleStatus = (e) => {
+        console.log(e.target.value)
+        setStatus(e.target.value)
     }
 
     useEffect(() => {
@@ -52,11 +72,11 @@ const UpdateModel = () => {
 
                     <input id='updateTaskInput' type="text" value={updateInput} onChange={(e) => setUpdateInput(e.target.value)} className='bg-gray-600 w-full rounded p-2 outline-none border border-gray-800' />
                     <div>
-                        <select value={updateTask.status} onChange={(e) => {
-                            console.log(e.target.value)
-                        }} className='p-2 border border-gray-950 outline-none rounded' style={{ backgroundColor: getTaskStatusColor(updateTask.sta) }} >
+                        <select value={status} onChange={(e) => {
+                            handleStatus(e)
+                        }} className='p-2 border border-gray-950 outline-none rounded' style={{ backgroundColor: getTaskStatusColor(status).color,color: getTaskStatusColor(status).textColor }} >
                             {
-                                Category.workStatusCategory.map((ws, i) => <option key={ws.id} value={ws.name} style={{ backgroundColor: ws.color }}>{ws.emoji} {ws.name}</option>)
+                                Category.workStatusCategory.map((ws, i) => <option key={ws.id} value={ws.name} style={{ backgroundColor: ws.color, color: ws.textColor }}>{ws.emoji} {ws.name}</option>)
                             }
                         </select>
                     </div>
@@ -78,7 +98,7 @@ const UpdateModel = () => {
                             <form name='category-form' className='flex gap-x-13 gap-y-3 flex-wrap'>
                                 {
                                     Category.taskTypeCategories.map((tc, index) => (
-                                        <div className='flex gap-2'>
+                                        <div className='flex gap-2' key={index}>
 
                                             <input onChange={(e) => handleCategory(e)} type='radio' id={index} value={tc.name} name='priority' checked={updateTask.category === tc.name ? true : false} />
                                             <label htmlFor={index}>{tc.name}</label>
@@ -103,15 +123,13 @@ const UpdateModel = () => {
                                 {
                                     Category.priorityCategories.map((pc, index) => (
 
-                                        <div className='flex gap-2'>
+                                        <div className='flex gap-2' key={index}>
 
                                             <input onChange={(e) => handlePriority(e)} type='radio' id={index} value={pc.name} name='priority' checked={updateTask.priority === pc.name ? true : false} />
                                             <label htmlFor={index}>{pc.name}</label>
                                         </div>
 
-                                        // <label>
-                                        //     <input type="radio" name="priority" value={pc.name} /> {pc.name} {pc.emoji}
-                                        // </label>
+
                                     ))
                                 }
                             </form>
@@ -123,7 +141,7 @@ const UpdateModel = () => {
             </div>
 
             <div className='flex gap-2 justify-end px-3 py-2 border-t border-gray-800 text-black'>
-                <button onClick={() => (setModelStatus('Close'), setModelType(''))} className='bg-amber-600 px-3 font-semibold text-blue-950 rounded cursor-pointer hover:bg-red-500'>Update</button>
+                <button onClick={() => (setModelStatus('Close'), setModelType(''), handleSubmit())} className='bg-amber-600 px-3 font-semibold text-blue-950 rounded cursor-pointer hover:bg-red-500'>Update</button>
                 <button onClick={() => (setModelStatus('Close'), setModelType(''))} className='bg-green-600 px-3 font-semibold text-blue-950 rounded cursor-pointer hover:bg-green-500'>Cancel</button>
             </div>
         </div>
