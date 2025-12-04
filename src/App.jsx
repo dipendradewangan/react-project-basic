@@ -1,4 +1,5 @@
 import DynamicModel from "./Components/DynamicModel"
+import TaskList from "./Pages/TaskList"
 import Todo from "./Pages/Todo"
 const App = () => {
   return (
@@ -6,6 +7,8 @@ const App = () => {
       <DynamicModel/>
       <Todo/>
     </div>
+
+    // <TaskList/>
   )
 }
 

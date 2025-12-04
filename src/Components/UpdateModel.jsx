@@ -101,7 +101,7 @@ const UpdateModel = () => {
                                         <div className='flex gap-2' key={index}>
 
                                             <input onChange={(e) => handleCategory(e)} type='radio' id={index} value={tc.name} name='priority' checked={updateTask.category === tc.name ? true : false} />
-                                            <label htmlFor={index}>{tc.name}</label>
+                                            <label htmlFor={index}>{tc.emoji}{tc.name}</label>
                                         </div>
 
                                     ))
@@ -126,7 +126,7 @@ const UpdateModel = () => {
                                         <div className='flex gap-2' key={index}>
 
                                             <input onChange={(e) => handlePriority(e)} type='radio' id={index} value={pc.name} name='priority' checked={updateTask.priority === pc.name ? true : false} />
-                                            <label htmlFor={index}>{pc.name}</label>
+                                            <label htmlFor={index}>{pc.emoji} {pc.name}</label>
                                         </div>
 
 

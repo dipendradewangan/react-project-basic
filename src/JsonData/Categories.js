@@ -67,8 +67,18 @@ export const Category = {
 
 export const getTaskStatusColor = (statusName = 'Pending') => {
   const taskInfo = Category.workStatusCategory.find((item) => item.name.toLowerCase() === statusName.toLocaleLowerCase())
-  return {color : taskInfo.color, textColor : taskInfo.textColor}
+  return { color: taskInfo.color, textColor: taskInfo.textColor, emoji: taskInfo.emoji }
 }
 
 
 
+export const getTaskDecorationValues = (group="priorityCategories", name="Urgent")=>{
+  return Category[group].find((item)=>item.name == name)
+}
+
+
+
+const abc = [1,2,1,1,1,3]
+
+
+console.log(abc)
