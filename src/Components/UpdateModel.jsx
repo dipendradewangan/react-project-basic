@@ -5,13 +5,13 @@ import { Category, getTaskStatusColor } from '../JsonData/Categories'
 
 const UpdateModel = () => {
 
-    const { tasks, setTasks, setModelStatus, modelType, setModelType, updateTaskIndex, setUpdateTaskIndex } = useContext(TaskDataContext)
+    const { tasks, setTasks, setModelStatus, modelType, setModelType, updateTaskIndex, setUpdateTaskIndex, setFilters } = useContext(TaskDataContext)
 
     const [updateInput, setUpdateInput] = useState('')
 
     const [updateTask, setUpdateTask] = useState(tasks[updateTaskIndex])
 
-    const [status, setStatus ] = useState(tasks[updateTaskIndex].status)
+    const [status, setStatus] = useState(tasks[updateTaskIndex].status)
 
     // const [tempUpdateTask, setTempUpdateTask] = useState([...updateTask])
 
@@ -42,6 +42,12 @@ const UpdateModel = () => {
         newTaskArray[updateTaskIndex].status = status
 
         setTasks(newTaskArray)
+        setFilters({
+            status: [],
+            category: [],
+            priority: []
+        })
+
     }
 
 
@@ -74,7 +80,7 @@ const UpdateModel = () => {
                     <div>
                         <select value={status} onChange={(e) => {
                             handleStatus(e)
-                        }} className='p-2 border border-gray-950 outline-none rounded' style={{ backgroundColor: getTaskStatusColor(status).color,color: getTaskStatusColor(status).textColor }} >
+                        }} className='p-2 border border-gray-950 outline-none rounded' style={{ backgroundColor: getTaskStatusColor(status).color, color: getTaskStatusColor(status).textColor }} >
                             {
                                 Category.workStatusCategory.map((ws, i) => <option key={ws.id} value={ws.name} style={{ backgroundColor: ws.color, color: ws.textColor }}>{ws.emoji} {ws.name}</option>)
                             }

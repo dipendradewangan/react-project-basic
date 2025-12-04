@@ -4,16 +4,22 @@ import { TaskDataContext } from '../ContextApi/Context'
 
 const DeleteModel = () => {
 
-    const { setModelStatus, modelType, setModelType, tasks, setTasks, updateTaskIndex, setUpdateTaskIndex } = useContext(TaskDataContext)
+    const { setModelStatus, modelType, setModelType, tasks, setTasks, updateTaskIndex, setUpdateTaskIndex, filters, setFilters } = useContext(TaskDataContext)
 
 
     const handleDelete = () => {
 
-        if(updateTaskIndex !== null ){
+        if (updateTaskIndex !== null) {
             const newArr = [...tasks]
             const updatedArr = newArr.filter((item) => item !== newArr[updateTaskIndex])
             setTasks(updatedArr)
             setUpdateTaskIndex(null)
+            setFilters({
+                status: [],
+                category: [],
+                priority: []
+            })
+
         }
 
     }

@@ -42,7 +42,7 @@ const TodoTaskList = () => {
 
 
     return (
-        <div className='mt-6 flex flex-col gap-2 overflow-hidden ' >
+        <div className='mt-6 flex flex-col gap-2 overflow-hidden h-[70vh] overflow-y-auto' >
 
             {
                 filteredData.map((t, i) => (

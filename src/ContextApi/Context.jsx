@@ -11,17 +11,23 @@ const Context = (props) => {
             setTasks(JSON.parse(localStorage.getItem("todoTasks")))
             setFilteredData(JSON.parse(localStorage.getItem("todoTasks")))
         }
-        
+
     }, [])
-    
-    
-    
+
+
+
     const [tasks, setTasks] = useState([])
     const [modelStatus, setModelStatus] = useState('Close')
     const [modelType, setModelType] = useState("")
     const [updateTaskIndex, setUpdateTaskIndex] = useState(null)
     const [filteredData, setFilteredData] = useState([...tasks])
-    
+    const [filters, setFilters] = useState({
+        status: [],
+        category: [],
+        priority: []
+    })
+
+
     useEffect(() => {
         localStorage.setItem("todoTasks", (JSON.stringify(tasks)))
         setFilteredData(tasks)
@@ -30,7 +36,7 @@ const Context = (props) => {
 
     return (
         <div>
-            <TaskDataContext.Provider value={{ tasks, setTasks, modelStatus, setModelStatus, modelType, setModelType, updateTaskIndex, setUpdateTaskIndex, filteredData, setFilteredData }}>
+            <TaskDataContext.Provider value={{ tasks, setTasks, modelStatus, setModelStatus, modelType, setModelType, updateTaskIndex, setUpdateTaskIndex, filteredData, setFilteredData, filters, setFilters }}>
                 {props.children}
             </TaskDataContext.Provider>
         </div>

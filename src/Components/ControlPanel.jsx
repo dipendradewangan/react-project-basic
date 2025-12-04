@@ -6,7 +6,7 @@ import { TaskDataContext } from "../ContextApi/Context";
 
 const ControlPanel = () => {
 
-    const { tasks, filteredData, setFilteredData } = useContext(TaskDataContext)
+    const { tasks, filteredData, setFilteredData, filters, setFilters } = useContext(TaskDataContext)
     const [panelState, setPanelState] = useState('close')
 
 
@@ -15,11 +15,11 @@ const ControlPanel = () => {
 
 
     // multiple selection filters
-    const [filters, setFilters] = useState({
-        status: [],
-        category: [],
-        priority: []
-    })
+    // const [filters, setFilters] = useState({
+    //     status: [],
+    //     category: [],
+    //     priority: []
+    // })
 
 
     const statusOptions = tasks.map(item => ({
