@@ -52,14 +52,12 @@ const UpdateModel = () => {
 
 
     const handleStatus = (e) => {
-        console.log(e.target.value)
         setStatus(e.target.value)
     }
 
     useEffect(() => {
 
         if (modelType === 'Update') {
-            console.log(updateTask)
             setUpdateInput(updateTask.taskName)
 
         }

@@ -20,7 +20,7 @@ const Context = (props) => {
     const [modelStatus, setModelStatus] = useState('Close')
     const [modelType, setModelType] = useState("")
     const [updateTaskIndex, setUpdateTaskIndex] = useState(null)
-    const [filteredData, setFilteredData] = useState([...tasks])
+    let [filteredData, setFilteredData] = useState([...tasks])
     const [filters, setFilters] = useState({
         status: [],
         category: [],
