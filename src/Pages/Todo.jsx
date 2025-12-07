@@ -8,7 +8,7 @@ const Todo = () => {
 
             <ControlPanel/>
             <div >
-                <h1 className="text-5xl text-center p-5 mb-12 text-amber-100">Todos</h1>
+                <h1 className="text-5xl text-center px-5 mb-12 text-amber-100">Task Manager</h1>
                 <TodoHeader/>
                 <TodoTaskList/>
             </div>

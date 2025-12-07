@@ -123,7 +123,7 @@ const UpdateModel = () => {
 
                         <h1 className='font-semibold text-xl text-gray-400'>Set Priority</h1>
                         <div>
-                            <form name='Priority-form' className='flex gap-13 flex-wrap'>
+                            <form name='Priority-form' className='flex gap-x-13 gap-y-3 flex-wrap'>
                                 {
                                     Category.priorityCategories.map((pc, index) => (
 
